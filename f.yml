@@ -1,0 +1,23 @@
+service:
+  name: serverless-ssr
+provider:
+  name: aliyun
+
+custom: # 发布后自动生成测试域名
+  customDomain:
+    domainName: auto
+
+aggregation: # 聚合成一个函数发布
+  ssr: # 聚合函数的名称
+    deployOrigin: false
+    functionsPattern:
+      - '*'
+
+package:
+  include:
+    - build
+  exclude:
+    - package-lock.json
+  artifact: code.zip
+
+deployType: egg       ## 部署的应用类型
